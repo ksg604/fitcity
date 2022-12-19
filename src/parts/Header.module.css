@@ -1,0 +1,31 @@
+.Header {
+  display: flex;
+  flex-direction: row;
+  align-items:  center;
+  min-width: 100%;
+  max-width: 400px;
+  min-height: 7vh;
+  max-height: 100vh;
+  background-color: #242424;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items:  center;
+  margin: 0 10px;
+}
+
+.drawer {
+  position: absolute;
+  background: #242424;
+  transition: width 1s ease-out;
+  top: 7vh;
+  height: 93vh;
+  width: 100%;
+}
+
+.drawer.hidden {
+  width: 0%;
+  transition: width 1s ease-in;
+}
