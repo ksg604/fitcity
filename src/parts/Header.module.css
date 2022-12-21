@@ -3,10 +3,9 @@
   flex-direction: row;
   align-items:  center;
   min-width: 100%;
-  max-width: 400px;
-  min-height: 7vh;
-  max-height: 100vh;
+  height: 12vh;
   background-color: #242424;
+  z-index: 1;
 }
 
 .row {
@@ -14,18 +13,40 @@
   flex-direction: row;
   align-items:  center;
   margin: 0 10px;
+  width: 100%;
+}
+
+.banner-container {
+  margin: 0 auto;
+}
+
+.header-banner {
+  width: 250px;
 }
 
 .drawer {
   position: absolute;
   background: #242424;
-  transition: width 1s ease-out;
-  top: 7vh;
-  height: 93vh;
+  transition: all .25s;
+  overflow: hidden;
+  top: 10vh;
+  height: calc(100vh - 7vh);
   width: 100%;
 }
 
 .drawer.hidden {
   width: 0%;
-  transition: width 1s ease-in;
+}
+
+.drawer-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  color: white;
+  margin: 20px 0;
+}
+
+.drawer-item {
+  padding: 5px 0;
 }
