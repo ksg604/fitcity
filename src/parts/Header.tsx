@@ -10,7 +10,7 @@ export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return(
-    <div className={styles["Header"]}>
+    <header className={styles["Header"]}>
       <div className={styles["row"]}> 
         <FontAwesomeIcon icon={drawerOpen ? faX : faBars} size="2xl" onClick={() => setDrawerOpen(!drawerOpen)} color="white"/>
         <Link className={styles["banner-container"]} to="/" onClick={() => setDrawerOpen(false)}>
@@ -25,6 +25,6 @@ export default function Header() {
           <Link className={styles["drawer-item"]} to="/products/knee-sleeves" reloadDocument>Knee Sleeves</Link>
         </nav>
       </div>
-    </div>
+    </header>
   )
 }

@@ -1,4 +1,5 @@
 .Header {
+  position: sticky;
   display: flex;
   flex-direction: row;
   align-items:  center;
@@ -6,6 +7,7 @@
   height: 12vh;
   background-color: #242424;
   z-index: 1;
+  top: 0;
 }
 
 .row {
@@ -27,10 +29,13 @@
 .drawer {
   position: absolute;
   background: #242424;
-  transition: all .25s;
+  transition: width .25s;
   overflow: hidden;
-  top: 10vh;
-  height: calc(100vh - 7vh);
+  top: 12vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 12vh);
   width: 100%;
 }
 
@@ -48,5 +53,6 @@
 }
 
 .drawer-item {
-  padding: 5px 0;
+  white-space: nowrap;
+  padding: 10px 0;
 }
