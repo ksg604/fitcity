@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  jti: someuniquejti4321
+  user: one
+  exp: 2022-12-23 20:33:56
+
+two:
+  jti: someuniquejti432
+  user: two
+  exp: 2023-03-23 20:33:56
