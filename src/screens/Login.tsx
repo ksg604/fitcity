@@ -1,10 +1,10 @@
-import { FormEvent, useState, useEffect } from "react";
+import { FormEvent, useState } from "react";
 import styles from "./Login.module.css";
 import api from "../ApiClient";
 import FormError from "../components/FormError";
-import { useAppDispatch, useAppSelector } from "../hooks";
+import { useAppDispatch } from "../hooks";
 import { setLoggedIn } from "../features/auth/authSlice";
-import { useNavigate, redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
 
@@ -43,9 +43,7 @@ export default function Login() {
             <input className={styles["form-input"]} name="password" type="password" onFocus={clearValidationError}/>
           </div>
           <input type="submit" value="Login"></input>
-          {validationError && 
-            <FormError error={validationError}/>
-          }
+          { validationError && <FormError error={validationError}/> }
         </form>
       </main>
     </div>
