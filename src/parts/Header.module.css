@@ -29,7 +29,7 @@
 .drawer {
   position: absolute;
   background: #242424;
-  transition: width .25s;
+  transition: width .2s;
   overflow: hidden;
   top: 12vh;
   bottom: 0;
@@ -55,4 +55,12 @@
 .drawer-item {
   white-space: nowrap;
   padding: 10px 0;
+}
+
+.user-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 80%;
+  margin: 20px 0;
 }
