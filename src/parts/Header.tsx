@@ -12,9 +12,9 @@ export default function Header() {
 
   const isLoggedIn = useAppSelector(state => state.loggedIn);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const navigate = useNavigate();
 
   const handleLogout = async () => {
     if (drawerOpen) setDrawerOpen(false);
@@ -48,7 +48,7 @@ export default function Header() {
               </div> 
             : <div className={styles["user-row"]}>
                 <button onClick={() => {setDrawerOpen(false); navigate("/login")}}>Login</button>
-                <button>Sign Up</button>
+                <button onClick={() => {setDrawerOpen(false); navigate("/signup")}}>Sign Up</button>
               </div>
           }
         </nav>

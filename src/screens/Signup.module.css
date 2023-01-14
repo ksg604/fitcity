@@ -1,0 +1,45 @@
+.Signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 90%;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+
+.form-input {
+  background: inherit;
+  color: inherit;
+  border: solid 1px black;
+  padding: 8px;
+  font-size: 1.2rem;
+}
+
+.password-rules {
+  background: #242424;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3px;
+  border-radius: 5px;
+  padding: 8px;
+}

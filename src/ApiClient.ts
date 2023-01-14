@@ -36,8 +36,18 @@ async function fetchGenerator(apiEndpoint: string, method: string, data: Object,
 
 export default class ApiClient {
 
-  static async login(username: FormDataEntryValue | null, password: FormDataEntryValue | null) {
-    let r = await fetchGenerator("/users/login", "POST", {username: username, password: password}, false);
+  static async signup(email: FormDataEntryValue, password: FormDataEntryValue, 
+                      password_confirmation: FormDataEntryValue) {
+    console.log(email);
+    let r = await fetchGenerator("/users", "POST", {email: email, 
+                                                    password: password, 
+                                                    password_confirmation: password_confirmation}, false);   
+    store.dispatch(setAccessToken(r.access_token)); 
+    return r;
+  }
+
+  static async login(email: FormDataEntryValue | null, password: FormDataEntryValue | null) {
+    let r = await fetchGenerator("/users/login", "POST", {email: email, password: password}, false);
     store.dispatch(setAccessToken(r.access_token));
     return r;
   }

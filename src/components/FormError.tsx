@@ -1,7 +1,6 @@
-import { AppProps } from "../props";
 import styles from "./FormError.module.css";
 
-export default function FormError({ error } : AppProps) {
+export default function FormError({ error } : { error: String }) {
   return(
     <div className={styles["FormError"]}>
       {error}
