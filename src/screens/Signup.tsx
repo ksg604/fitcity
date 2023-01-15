@@ -7,6 +7,8 @@ import { setLoggedIn } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import PasswordRule from "../components/signup/PasswordRule";
 import { palette } from "../palette";
+import Toast from "../parts/Toast";
+import { toast } from "react-toastify";
 
 export default function Signup() {
 
@@ -59,8 +61,10 @@ export default function Signup() {
     evt.preventDefault();
     try {
       await api.signup(formInput.email.value, formInput.password.value, formInput.password_confirmation.value);
+      toast("Successfully signed up", {toastId: "successtoast", type: "success"});
       dispatch(setLoggedIn(true));
-      navigate("/profile");
+      // setTimeout(() => navigate("/profile"), 3000);
+      navigate("/profile")
     } catch (error : any) {
       const errors: Array<String> = error.message.split(", ");
       console.log(errors);
@@ -69,6 +73,7 @@ export default function Signup() {
         password: {...formInput.password, valid: !hasError(errors, "Password is invalid"),},
         password_confirmation: {...formInput.password_confirmation, valid: !hasError(errors, "Password confirmation doesn't match Password")}
       });
+      toast("An error has occurred", {toastId: "errortoast", type: "error"});
     }
   }
 

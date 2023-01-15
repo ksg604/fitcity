@@ -10,7 +10,7 @@ async function fetchGenerator(apiEndpoint: string, method: string, data: Object,
   if (credsRequired) {
     headers = {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${store.getState().accessToken}`
+      "Authorization": `Bearer ${store.getState().auth.accessToken}`
     }
   } else {
     headers = {
@@ -38,7 +38,6 @@ export default class ApiClient {
 
   static async signup(email: FormDataEntryValue, password: FormDataEntryValue, 
                       password_confirmation: FormDataEntryValue) {
-    console.log(email);
     let r = await fetchGenerator("/users", "POST", {email: email, 
                                                     password: password, 
                                                     password_confirmation: password_confirmation}, false);   

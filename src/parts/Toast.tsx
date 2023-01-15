@@ -8,6 +8,7 @@ export default function Toast() {
     className={`${styles["toast-container"]}`}
     toastClassName={`${styles["toast-wrapper"]}`} 
     bodyClassName={`${styles["toast-body"]}`}
+    autoClose={3000}
     />
   )
 }

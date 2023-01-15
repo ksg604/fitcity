@@ -10,7 +10,7 @@ import api from "../ApiClient";
 
 export default function Header() {
 
-  const isLoggedIn = useAppSelector(state => state.loggedIn);
+  const isLoggedIn = useAppSelector(state => state.auth.loggedIn);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

@@ -12,7 +12,7 @@ import Signup from "../screens/Signup";
 
 export default function Routes() {
 
-  const isLoggedIn = useAppSelector(state => state.loggedIn);
+  const isLoggedIn = useAppSelector(state => state.auth.loggedIn);
   const navigate = useNavigate();
   
   const protectedRoutes = [

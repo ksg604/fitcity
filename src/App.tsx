@@ -5,6 +5,7 @@ import Footer from "./parts/Footer";
 import { BrowserRouter } from 'react-router-dom';
 import Routes from "./routing/Routes";
 import AppModal from "./parts/AppModal";
+import Toast from "./parts/Toast";
 
 export default function App() {
 
@@ -14,6 +15,7 @@ export default function App() {
           <Header />
           <Routes />
           <Footer />
+          <Toast />
         </BrowserRouter>
       </div>
   )
