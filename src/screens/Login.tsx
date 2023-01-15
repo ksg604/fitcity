@@ -5,6 +5,8 @@ import FormError from "../components/FormError";
 import { useAppDispatch } from "../hooks";
 import { setLoggedIn } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import Toast from "../parts/Toast";
+import { toast } from "react-toastify";
 
 export default function Login() {
 
@@ -30,9 +32,11 @@ export default function Login() {
     try {
       await api.login(formInput.email, formInput.password);
       dispatch(setLoggedIn(true));
+      
       navigate("/");
     } catch (error: any) {
       setValidationError("Invalid email or password");
+      toast("Invalid email or password", {toastId: "Invalid"});
       console.log(error);
     }
   }
@@ -68,6 +72,7 @@ export default function Login() {
           </div>  
         </form>
       </main>
+      <Toast />
     </div>
   )
 }
