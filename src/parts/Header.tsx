@@ -7,6 +7,7 @@ import banner from "../assets/images/banner_image.avif";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { setLoggedIn } from "../features/auth/authSlice";
 import api from "../ApiClient";
+import { toast } from "react-toastify";
 
 export default function Header() {
 
@@ -20,6 +21,7 @@ export default function Header() {
     if (drawerOpen) setDrawerOpen(false);
     try {
       await api.logout();
+      toast("Successfully logged out", {toastId: "successtoast", type: "success"});
       dispatch(setLoggedIn(false));
     } catch (error : any) {
       console.log(error);
