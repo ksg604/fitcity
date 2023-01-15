@@ -8,23 +8,31 @@ import { useNavigate } from "react-router-dom";
 
 export default function Login() {
 
-  const [validationError, setValidationError] = useState<String[]>([]);
+  type LoginState = {
+    email: FormDataEntryValue,
+    password: FormDataEntryValue
+  }
+
+  const [formInput, setFormInput] = useState<LoginState>({
+    email: "",
+    password: ""
+  });
+
+  const [validationError, setValidationError] = useState<String>("");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const clearValidationError = () => setValidationError([]);
+  const clearValidationError = () => setValidationError("");
 
   const handleSubmit = async (evt: FormEvent) => {
     evt.preventDefault();
-    
-    let formData = new FormData(evt.target as HTMLFormElement);
 
     try {
-      await api.login(formData.get("email"), formData.get("password"));
+      await api.login(formInput.email, formInput.password);
       dispatch(setLoggedIn(true));
       navigate("/");
     } catch (error: any) {
-      setValidationError(prev => [...prev, error.messaged]);
+      setValidationError("Invalid email or password");
       console.log(error);
     }
   }
@@ -35,14 +43,29 @@ export default function Login() {
         <h2>Login</h2>
         <form className={styles["login-form"]} onSubmit={handleSubmit}>
           <div className={styles["form-input-container"]}>
-            <label htmlFor="email">Email Address: </label>
-            <input className={styles["form-input"]} name="email" type="text" onFocus={clearValidationError}/>
+            <label className={styles["label"]} htmlFor="email" 
+            style={(formInput.email as string).length > 0 ? {} : {visibility: "hidden"}}>Email Address</label>
+            <input required 
+                  className={styles["form-input"]} 
+                  name="email" type="text" placeholder="Email"
+                  onFocus={clearValidationError}
+                  onInput={(evt) => {setFormInput({...formInput, email: evt.currentTarget.value})}}
+            />
           </div>
           <div className={styles["form-input-container"]}>
-            <label htmlFor="password">Password: </label>
-            <input className={styles["form-input"]} name="password" type="password" onFocus={clearValidationError}/>
+            <label className={styles["label"]} htmlFor="password" 
+            style={(formInput.password as string).length > 0 ? {} : {visibility: "hidden"}}>Password</label>
+            <input required 
+                  className={styles["form-input"]} 
+                  name="password" type="password" placeholder="Password"
+                  onFocus={clearValidationError}
+                  onInput={(evt) => {setFormInput({...formInput, password: evt.currentTarget.value})}}
+            />
           </div>
-          <input type="submit" value="Login"></input>
+          <input className={`${styles["btn"]} ${styles["submit-btn"]}`} type="submit" value="Login"></input>
+          <div className={styles["error-container"]}>
+            {validationError && <FormError error={validationError}/>}
+          </div>  
         </form>
       </main>
     </div>

@@ -15,7 +15,7 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   width: 100%;
 }
 
@@ -23,10 +23,27 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 5px;
+  gap: 9px;
 }
 
 .form-input {
   background: inherit;
   color: inherit;
+  border: solid 1px black;
+  padding: 8px;
+  font-size: 1.2rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  line-height: 0;
+}
+
+.submit-btn {
+  padding: 10px;
+  font-size: 1.02rem;
+}
+
+.error-container {
+  text-align: center;
 }

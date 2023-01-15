@@ -10,7 +10,7 @@ import { palette } from "../palette";
 
 export default function Signup() {
 
-  interface FormState {
+  type FormState = {
     showErrors: boolean,
     email: {value: FormDataEntryValue, valid: boolean, attempted: boolean},
     password: {value: FormDataEntryValue, valid: boolean, attempted: boolean},
@@ -78,17 +78,21 @@ export default function Signup() {
         <h2>Sign Up</h2>
         <form className={styles["signup-form"]} onSubmit={handleSubmit}>
           <div className={styles["form-input-container"]}>
-            <label htmlFor="email">Email: </label>
+            <label className={styles["label"]} htmlFor="email" 
+                style={formInput.email.value ? {} : {visibility: "hidden"}}>Email</label>
             <input required className={styles["form-input"]} name="email" type="text" 
               onInput={(evt) => {setFormInput({...formInput, email: {...formInput.email, value: evt.currentTarget.value}});}} 
+              placeholder="Email"
               onBlur={validateEmail}
               style={formInput.showErrors && formInput.email.value && !formInput.email.valid ? {borderColor: palette[2]} : {}}/>
             {formInput.showErrors && !formInput.email.valid && formInput.email.value && <FormError error="Please enter a valid email in the format email@email.com"/>}
           </div>
           <div className={styles["form-input-container"]}>
-            <label htmlFor="password">Password</label>
+            <label className={styles["label"]} htmlFor="password" 
+              style={formInput.password.value ? {} : {visibility: "hidden"}}>Password</label>
             <input required className={styles["form-input"]} name="password" type="password" 
-                    onInput={(evt) => {setFormInput({...formInput, password: {...formInput.password, value: evt.currentTarget.value}});}} 
+                    onInput={(evt) => {setFormInput({...formInput, password: {...formInput.password, value: evt.currentTarget.value}});}}
+                    placeholder="Password" 
                     onFocus={() => setShowPasswordRules(true)} 
                     onBlur={(evt) => {setShowPasswordRules(false); validatePassword(evt);}} 
                     style={formInput.showErrors && !formInput.password.valid ? {borderColor: "#e63f57"} : {}}/>
@@ -105,14 +109,16 @@ export default function Signup() {
           {formInput.showErrors && !formInput.password.valid && 
           <FormError error="Password does not meet requirements.  Use 8 or more characters (up to 32) along with a mixture of letters, numbers, and symbols"/>}
           <div className={styles["form-input-container"]}>
-            <label htmlFor="confirm-password">Confirm Password</label>
+            <label className={styles["label"]} htmlFor="confirm-password" 
+            style={formInput.password_confirmation.value ? {} : {visibility: "hidden"}}>Confirm Password</label>
             <input required className={styles["form-input"]} name="confirm-password" type="password"
                     onInput={(evt) => {setFormInput({...formInput, password_confirmation: {...formInput.password_confirmation, value: evt.currentTarget.value}});}} 
+                    placeholder="Confirm Password"
                     onBlur={validatePasswordConfirmation}
                     style={formInput.showErrors && !formInput.password_confirmation.valid ? {borderColor: palette[2]} : {}}/>
             {formInput.showErrors && !formInput.password_confirmation.valid && <FormError error="Passwords need to match"/>}
           </div>
-          <input type="submit" value="Sign Up"/>
+          <input type="submit" className={`${styles["btn"]} ${styles["submit-btn"]}`} value="Sign Up"/>
         </form>
       </main>
     </div>
