@@ -8,15 +8,15 @@
 # Fixtures automatically loaded onto test database when tests are run
 
 one: 
-  username: testuser1@test.ca
+  email: testuser1@test.ca
   password_digest: SecurePassword1234!
 # column: value
 #
 two: 
-  username: testuser2@test.ca
+  email: testuser2@test.ca
   password_digest: SecurePassword1234!
 # column: value
 
 three:
-  username: testuser3@test.ca 
+  email: testuser3@test.ca 
   password_digest: SecurePassword1234!

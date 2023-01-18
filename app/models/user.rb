@@ -11,9 +11,9 @@ class User < ApplicationRecord
   
   attr_accessor :token_issued_at
 
-  validates :username, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, on: :create
-  validates :password, confirmation: { case_sensitive: true }, length: { minimum: 8, maximum: 20 }, 
-            format: { with: /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,20}/ },
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, on: :create
+  validates :password, confirmation: { case_sensitive: true }, length: { minimum: 8, maximum: 32 }, 
+            format: { with: /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,32}/ },
             on: :create
   validates :password_confirmation, presence: true, on: :create
 

@@ -36,10 +36,12 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # Care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
+
+  config.action_mailer.delivery_method = :smtp
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -69,4 +71,14 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.eager_load_paths += %W(#{config.root}/lib)
+
+  # SMTP settings for our mailer
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com',
+    user_name:            ENV['MAILER_EMAIL'],
+    password:             ENV['MAILER_EMAIL_PASSWORD'],
+    authentication:       :login,
+    enable_starttls_auto: true }
 end
