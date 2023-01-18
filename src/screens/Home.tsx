@@ -8,6 +8,7 @@ export default function Home() {
   return(
     <div className={styles["Home"]}>
       <main>
+        <h2>Products</h2>
         <Link to="/products/footwear">
           <div className={styles["product-link-container"]}>
             <img className={styles["product-img"]} src={Footwear} alt="Footwear"/>

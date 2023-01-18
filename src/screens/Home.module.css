@@ -20,6 +20,7 @@
 
 .product-img {
   width: 100%;
+  border-radius: 8px;
 }
 
 .product-img-overlay {
@@ -28,6 +29,7 @@
   top: 0;
   bottom: 0;
   width: 100%;
+  border-radius: 8px;
 }
 
 .product-overlay-text {

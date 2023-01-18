@@ -34,7 +34,7 @@ body {
   margin: 0;
   display: flex;
   place-items: normal start;
-  min-width: 320px;
+  min-width: 280px;
   min-height: 100vh;
 }
 
@@ -59,7 +59,8 @@ button:hover {
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  /* outline: 4px auto -webkit-focus-ring-color; */
+  outline: none;
 }
 
 * {

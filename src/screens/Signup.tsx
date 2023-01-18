@@ -7,7 +7,6 @@ import { setLoggedIn } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import PasswordRule from "../components/signup/PasswordRule";
 import { palette } from "../palette";
-import Toast from "../parts/Toast";
 import { toast } from "react-toastify";
 
 export default function Signup() {
@@ -73,7 +72,7 @@ export default function Signup() {
         password: {...formInput.password, valid: !hasError(errors, "Password is invalid"),},
         password_confirmation: {...formInput.password_confirmation, valid: !hasError(errors, "Password confirmation doesn't match Password")}
       });
-      toast("An error has occurred", {toastId: "errortoast", type: "error"});
+      toast("Please correct all indicated fields", {toastId: "errortoast", type: "error"});
     }
   }
 
@@ -123,7 +122,9 @@ export default function Signup() {
                     style={formInput.showErrors && !formInput.password_confirmation.valid ? {borderColor: palette[2]} : {}}/>
             {formInput.showErrors && !formInput.password_confirmation.valid && <FormError error="Passwords need to match"/>}
           </div>
-          <input type="submit" className={`${styles["btn"]} ${styles["submit-btn"]}`} value="Sign Up"/>
+          <input type="submit" className={`${styles["btn"]} ${styles["submit-btn"]}`}
+            style={{background: palette[0]}}
+            value="Sign Up"/>
         </form>
       </main>
     </div>

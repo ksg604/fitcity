@@ -5,25 +5,31 @@ const apiUrl: string = "http://localhost:3000/api";
 
 async function fetchGenerator(apiEndpoint: string, method: string, data: Object, credsRequired: boolean) {
   
-  let headers: HeadersInit;
+  let headers: HeadersInit = {
+    "Content-Type": "application/json"
+  };
 
   if (credsRequired) {
     headers = {
-      "Content-Type": "application/json",
+      ...headers,
       "Authorization": `Bearer ${store.getState().auth.accessToken}`
     }
-  } else {
-    headers = {
-      "Content-Type": "application/json"
+  }
+
+  let requestInit : RequestInit = {
+    method: method,
+    headers: headers,
+    credentials: "include"
+  }
+
+  if (method !== "GET") {
+    requestInit = {
+      ...requestInit,
+      body: JSON.stringify(data)
     }
   }
   
-  const response = await fetch(apiUrl + apiEndpoint, {
-    method: method,
-    headers: headers,
-    credentials: "include",
-    body: JSON.stringify(data),
-  });
+  const response = await fetch(apiUrl + apiEndpoint, requestInit);
 
   let json = await response.json();
 
@@ -54,5 +60,13 @@ export default class ApiClient {
   static async logout() {
     let r = await fetchGenerator("/users/logout", "POST", {}, true);
     return r;
+  }
+
+  static async getMyInfo() {
+    return await fetchGenerator("/users/me", "GET", {}, true);
+  }
+
+  static async resetPassword() {
+    return await fetchGenerator("/users/reset-password", "POST", {}, true);
   }
 }
