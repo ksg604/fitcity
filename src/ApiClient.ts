@@ -1,7 +1,7 @@
 import store from "./store";
 import { setAccessToken } from "./features/auth/authSlice";
 
-const apiUrl: string = "http://localhost:3000/api";
+const apiUrl: string = "http://10.0.0.31:3001/api";
 
 async function fetchGenerator(apiEndpoint: string, method: string, data: Object, credsRequired: boolean) {
   
@@ -34,7 +34,7 @@ async function fetchGenerator(apiEndpoint: string, method: string, data: Object,
   let json = await response.json();
 
   if (response.ok) {
-    return json;
+    return json;        
   } else {
     throw new Error(json.message);
   }
@@ -52,7 +52,7 @@ export default class ApiClient {
   }
 
   static async login(email: FormDataEntryValue | null, password: FormDataEntryValue | null) {
-    let r = await fetchGenerator("/users/login", "POST", {email: email, password: password}, false);
+    let r =  await fetchGenerator("/users/login", "POST", {email: email, password: password}, false);
     store.dispatch(setAccessToken(r.access_token));
     return r;
   }
@@ -68,5 +68,9 @@ export default class ApiClient {
 
   static async resetPassword() {
     return await fetchGenerator("/users/reset-password", "POST", {}, true);
+  }
+
+  static async getProductInfo(product: string) {
+    return await fetchGenerator(`/products/${product}`, "GET", {}, true);
   }
 }

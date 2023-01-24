@@ -62,11 +62,9 @@ export default function Signup() {
       await api.signup(formInput.email.value, formInput.password.value, formInput.password_confirmation.value);
       toast("Successfully signed up", {toastId: "successtoast", type: "success"});
       dispatch(setLoggedIn(true));
-      // setTimeout(() => navigate("/profile"), 3000);
       navigate("/profile")
     } catch (error : any) {
       const errors: Array<String> = error.message.split(", ");
-      console.log(errors);
       setFormInput({...formInput, showErrors: true, 
         email: {...formInput.email, valid: !hasError(errors, "Email is invalid")},
         password: {...formInput.password, valid: !hasError(errors, "Password is invalid"),},

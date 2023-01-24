@@ -55,7 +55,7 @@ export default function MyProfile() {
       <AppModal 
         title="Reset Your Password?" 
         body={`An email with instructions to reset your password will be sent to ${myEmail}`}
-        onYes={handleResetPw}/>
+        onYes={handleResetPw} hasCancelBtn/>
     </div>
   )
 }

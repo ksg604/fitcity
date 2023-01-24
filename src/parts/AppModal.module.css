@@ -27,13 +27,30 @@
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
+  margin-top: 10px;
 }
 
 .modal-body {
+  width: 100%;
   margin-top: 0;
 }
 
 .modal-btn {
   width: 100px;
   text-align: center;
+}
+
+.close-row {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.close-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
 }

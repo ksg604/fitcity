@@ -1,14 +1,12 @@
 import { Routes as AppRoutes, Route, useMatch, useNavigate } from "react-router-dom";
 import Home from "../screens/Home";
-import Footwear from "../screens/Footwear";
-import KneeSleeves from "../screens/KneeSleeves";
-import LiftingBelts from "../screens/LiftingBelts";
 import Login from "../screens/Login";
 import MyProfile from '../screens/MyProfile';
 import NotFound from "../NotFound";
 import { useAppSelector } from "../hooks";
 import { useEffect } from "react";
 import Signup from "../screens/Signup";
+import Products from "../screens/Products";
 
 export default function Routes() {
 
@@ -30,9 +28,9 @@ export default function Routes() {
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/profile" element={<MyProfile/>}/>
-      <Route path="/products/footwear" element={<Footwear/>}/>
-      <Route path="/products/knee-sleeves" element={<KneeSleeves/>}/>
-      <Route path="/products/lifting-belts" element={<LiftingBelts/>}/>
+      <Route path="/products/footwear" element={<Products product="footwear"/>}/>
+      <Route path="/products/knee-sleeves" element={<Products product="knee-sleeves"/>}/>
+      <Route path="/products/lifting-belts" element={<Products product="lifting-belts"/>}/>
       <Route path="*" element={<NotFound/>}/>
     </AppRoutes>
   )

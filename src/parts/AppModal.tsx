@@ -1,31 +1,22 @@
-import Modal, { Styles } from "react-modal";
+import Modal from "react-modal";
 import { setModalIsOpen } from '../features/modal/modalSlice';
 import { useAppSelector, useAppDispatch } from '../hooks';
 import styles from "./AppModal.module.css";
+import { faX } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type modalProps = {
-  title: string, 
-  body: string, 
-  onYes: () => Promise<void>
+  title?: string, 
+  body: any, 
+  onYes?: () => any, 
+  hasXBtn?: boolean,
+  hasCancelBtn?: boolean
 }
 
-export default function AppModal({title, body, onYes} : modalProps) {
+export default function AppModal({title, body, onYes, hasXBtn, hasCancelBtn} : modalProps) {
 
   const dispatch = useAppDispatch();
   const modalIsOpen = useAppSelector(state => state.modal.isOpen);
-  const modalStyle : Styles = { content: {
-    position: "absolute", 
-    display: "flex", 
-    flexDirection: "column",
-    alignItems: "center",
-    top: "12vh",
-    right: "5%",
-    left: "5%",
-    marginTop: "auto",
-    marginBottom: "auto",
-    maxHeight: "fit-content",
-    width: "90%"
-  }};
 
   const afterOpen = () => {
     // Callback after opening modal
@@ -43,12 +34,19 @@ export default function AppModal({title, body, onYes} : modalProps) {
       onAfterOpen={afterOpen}
       onRequestClose={closeModal}
       contentLabel="Example Modal"
+      appElement={document.getElementById("App")}
       >
-      <h2>{title}</h2>
-      <p className={styles["modal-body"]}>{body}</p>
+      {hasXBtn && 
+        <span className={styles["close-row"]}>
+          <FontAwesomeIcon className={styles["close-btn"]} icon={faX} size="xl" onClick={closeModal} color="black"/>
+        </span>}
+      {title && <h2>{title}</h2>}
+      <div className={styles["modal-body"]}>{body}</div>
       <div className={styles["btn-row"]}>
-        <button className={`btn ${styles["modal-btn"]}`} onClick={onYes}>Yes</button>
-        <button className={`btn ${styles["modal-btn"]}`} onClick={closeModal}>Cancel</button>
+        {onYes && <button className={`btn ${styles["modal-btn"]}`} onClick={onYes}>Yes</button>}
+        {hasCancelBtn && 
+          <button className={`btn ${styles["modal-btn"]}`} onClick={closeModal}>Cancel</button>
+        }
       </div>
     </Modal>
   )

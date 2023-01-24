@@ -1,0 +1,18 @@
+.Loading {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 12vh);
+  width: 100%;
+  top: 12vh;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.loading-text {
+  margin: 0;
+  width: fit-content;
+}

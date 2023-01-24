@@ -17,7 +17,7 @@ export default function Home() {
             </div>
           </div>
         </Link>
-        <Link to="/products/belts">
+        <Link to="/products/lifting-belts">
           <div className={styles["product-link-container"]}>
             <img className={styles["product-img"]} src={Belt} alt="Belt"/>
             <div className={styles["product-img-overlay"]}>
