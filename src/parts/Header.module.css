@@ -8,9 +8,10 @@
   background-color: #242424;
   z-index: 1;
   top: 0;
+  box-shadow: 0 3px 8px 0 #242424;
 }
 
-.row {
+.outer-container {
   display: flex;
   flex-direction: row;
   align-items:  center;
@@ -19,6 +20,9 @@
 }
 
 .banner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
 }
 
@@ -55,6 +59,11 @@
 .drawer-item {
   white-space: nowrap;
   padding: 10px 0;
+  font-weight: 500;
+}
+
+.drawer-item:hover {
+  color: #e63f57;
 }
 
 .user-row {
@@ -65,8 +74,68 @@
   margin: 20px 0;
 }
 
+.desktop-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media screen and (min-width: 300px) {
   .header-banner {
     width: 250px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .Header {
+    flex-direction: column;
+    height: fit-content;
+    transition: padding 0.5s;
+  }
+
+  .Header.expanded {
+    padding: 15px 0;
+  }
+
+  .banner-container {
+    margin: 0;
+  }
+
+  .header-banner {
+    transition: width 0.5s;
+  }
+
+  .header-banner.expanded {
+    width: 300px;
+  }
+
+  .outer-container {
+    padding: 20px 40px;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .drawer-menu {
+    margin: 0 auto;
+    gap: 60px;
+    flex-direction: row;
+  }
+
+  @media screen and (min-width: 1200px) {
+    .drawer-menu {
+      gap: 120px;
+    }
+  }
+
+  @media screen and (min-width: 1920px) {
+    .drawer-menu {
+      gap: 180px;
+    }
+  }
+
+  @media screen and (min-width: 2560px) {
+    .drawer-menu {
+      gap: 240px;
+    }
   }
 }

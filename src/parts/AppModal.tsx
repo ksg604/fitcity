@@ -34,7 +34,7 @@ export default function AppModal({title, body, onYes, hasXBtn, hasCancelBtn} : m
       onAfterOpen={afterOpen}
       onRequestClose={closeModal}
       contentLabel="Example Modal"
-      appElement={document.getElementById("App")}
+      appElement={document.getElementById("App") as HTMLElement}
       >
       {hasXBtn && 
         <span className={styles["close-row"]}>
