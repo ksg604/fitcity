@@ -81,7 +81,7 @@ export default function Products({product} : {product : string}) {
       { screenState.loading
       ? <Loading />
       : <main className={styles["main"]}> 
-          <section className={styles["product-image-section"]}>
+          <section className={styles["product-img-section"]}>
             <div className={styles["img-container"]}>
               <img className={styles["product-img"]} 
                 src={screenState.currentVariant.image} alt="product img" 
@@ -93,7 +93,7 @@ export default function Products({product} : {product : string}) {
             <h2 className={styles["price"]}>${screenState.currentVariant.price}</h2>
             
             <div id="alt-color-selection" className={styles["alt-color-selection"]}>
-              <label htmlFor="colors">Colors: </label>
+              <label className={styles["subheader"]} htmlFor="colors">Colors: </label>
               <div id="colors" className={styles["colors"]}>
                 {screenState.productInfo.colors.map((color, index) => 
                 <img className={`${styles["alt-color-img"]} ${color.color === screenState.currentVariant.color ? styles["selected"] : ""}`} 
@@ -104,7 +104,7 @@ export default function Products({product} : {product : string}) {
               </div>
             </div>
             <div className={styles["size-container"]}>
-              <label htmlFor="sizes">Sizes: </label>
+              <label className={styles["subheader"]} htmlFor="sizes">Sizes: </label>
               <div id="sizes" className={styles["sizes"]}>
                 {screenState.productInfo.sizes.map((size, index) => 
                 <button className={`${styles["size-btn"]} ${size === screenState.currentVariant.size ? styles["selected"] : ""}`}
@@ -114,7 +114,10 @@ export default function Products({product} : {product : string}) {
                 onClick={handleChangeSize}>{size}</button>)}
               </div>
             </div>
-           { <p dangerouslySetInnerHTML={{ __html: screenState.productInfo.descriptionHtml as string }} />}
+            <div className={styles["description-container"]}>
+              <label className={styles["subheader"]} htmlFor="description">Description: </label>
+              <p id="description" className={styles["description"]} dangerouslySetInnerHTML={{ __html: screenState.productInfo.descriptionHtml as string }} />
+            </div>
           </section>
           <AppModal 
             title="" hasXBtn
