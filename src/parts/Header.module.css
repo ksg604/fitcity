@@ -26,6 +26,10 @@
   margin: 0 auto;
 }
 
+.banner-container:hover {
+  opacity: 80%;
+}
+
 .header-banner {
   width: 200px;
 }
@@ -63,7 +67,8 @@
 }
 
 .drawer-item:hover {
-  color: #e63f57;
+  color: inherit;
+  opacity: 75%;
 }
 
 .user-row {
