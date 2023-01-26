@@ -22,7 +22,7 @@ export default function Header() {
   const navigate = useNavigate();
   const [navigationState, setNavigationState] = useState<NavigationState>({
     previousScrollY: window.scrollY,
-    expandedHeader: false
+    expandedHeader: (window.scrollY < 10)
   });
 
   const [drawerOpen, setDrawerOpen] = useState(false);
