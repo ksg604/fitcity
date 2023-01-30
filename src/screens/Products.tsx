@@ -118,7 +118,11 @@ export default function Products({product} : {product : string}) {
               <label className={styles["subheader"]} htmlFor="description">Description: </label>
               <p id="description" className={styles["description"]} dangerouslySetInnerHTML={{ __html: screenState.productInfo.descriptionHtml as string }} />
             </div>
+            <div className={styles["add-to-cart"]}>
+              <button className={styles["cart-btn"]}>Add To Cart</button>
+            </div>
           </section>
+
           <AppModal 
             title="" hasXBtn
             body={<img src={screenState.currentVariant.image} width="100%"/>}/>

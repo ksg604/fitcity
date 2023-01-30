@@ -33,6 +33,7 @@ export default function Header() {
       await api.logout();
       toast("Successfully logged out", {toastId: "successtoast", type: "success"});
       dispatch(setLoggedIn(false));
+      navigate("/login");
     } catch (error : any) {
       console.log(error);
     }

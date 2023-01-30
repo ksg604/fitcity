@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 import { palette } from "../palette";
 import { toast } from "react-toastify";
 import { setModalIsOpen } from "../features/modal/modalSlice";
-import { useAppDispatch } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
 import AppModal from "../parts/AppModal";
 
 export default function MyProfile() {
 
   const [myEmail, setMyEmail] = useState("");
   const [canResetPassword, setCanResetPassword] = useState(true);
+  const isLoggedIn = useAppSelector(state => state.auth.loggedIn);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -23,11 +24,11 @@ export default function MyProfile() {
       }
     }
     getMyInfo();
-  }, [myEmail]);
+  }, [myEmail, isLoggedIn]);
  
   const handleResetPw = async () => {
     try {
-      await api.resetPassword();
+      await api.requestResetPassword();
       setCanResetPassword(false);
       setTimeout(() => setCanResetPassword(true), 60000);
       dispatch(setModalIsOpen(false));
