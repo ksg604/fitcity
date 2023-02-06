@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   text-align: center;
 }
@@ -15,4 +15,28 @@
 
 .toast-body {
 
+}
+
+@media screen and (min-width: 769px) {
+  .toast-container {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .toast-container {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .toast-container {
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .toast-container {
+    width: 30%;
+  }
 }

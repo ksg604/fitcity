@@ -4,7 +4,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import api from "../ApiClient";
 import { useAppDispatch } from "../hooks";
 import { setLoggedIn } from "../features/auth/authSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import PasswordRule from "../components/signup/PasswordRule";
 import { palette } from "../palette";
 import { toast } from "react-toastify";
@@ -82,7 +82,7 @@ export default function Signup() {
           <div className={styles["form-input-container"]}>
             <label className={styles["label"]} htmlFor="email" 
                 style={formInput.email.value ? {} : {visibility: "hidden"}}>Email</label>
-            <input required className={styles["form-input"]} name="email" type="text" 
+            <input required className={styles["form-input"]} name="email" type="email" 
               onInput={(evt) => {setFormInput({...formInput, email: {...formInput.email, value: evt.currentTarget.value}});}} 
               placeholder="Email"
               onBlur={validateEmail}
@@ -120,9 +120,14 @@ export default function Signup() {
                     style={formInput.showErrors && !formInput.password_confirmation.valid ? {borderColor: palette[2]} : {}}/>
             {formInput.showErrors && !formInput.password_confirmation.valid && <FormError error="Passwords need to match"/>}
           </div>
-          <input type="submit" className={`${styles["btn"]} ${styles["submit-btn"]}`}
-            style={{background: palette[0]}}
-            value="Sign Up"/>
+          <div className={styles["submit-container"]}>
+            <input className={`${styles["btn"]} ${styles["submit-btn"]}`} 
+              style={{background: palette[0]}}
+              type="submit" value="Sign Up"></input>
+            <Link to="/login" className={styles["login"]}>
+              Already have an account?
+            </Link>
+          </div>
         </form>
       </main>
     </div>

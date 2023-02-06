@@ -10,11 +10,13 @@ import { setIsMobile } from './features/device/deviceSlice';
 import { useEffect } from 'react';
 import api from "./ApiClient";
 import { setLoggedIn } from './features/auth/authSlice';
+import { setCart } from './features/cart/cartSlice';
 
 export default function App() {
 
   const dispatch = useAppDispatch();
   const token = useAppSelector(state => state.auth.accessToken);
+  const isLoggedIn = useAppSelector(state => state.auth.loggedIn);
 
   useEffect(() => {
 
@@ -44,9 +46,20 @@ export default function App() {
 
     return () => {window.removeEventListener("resize", resizeListener)}
   }, []);
-  
-  
 
+  useEffect(() => {
+    const getCart = async () => {
+      try {
+        let r = await api.getCart();
+        dispatch(setCart(r.cart));
+        console.log(r);
+      } catch (err: unknown) {
+        console.log(err);
+      }
+    }
+    if (token && isLoggedIn) getCart();
+  }, [token, isLoggedIn]);
+  
   return (
       <div id="App" className="App">
         <BrowserRouter>

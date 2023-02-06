@@ -54,3 +54,24 @@
   top: -10px;
   right: -10px;
 }
+
+@media screen and (min-width: 769px) {
+  .AppModal {
+    width: 450px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .AppModal {
+    width: 600px;
+  }
+
+  .modal-body {
+    width: 80%;
+  }
+
+  .btn-row {
+    width: 80%;
+    margin-top: 20px;
+  }
+}

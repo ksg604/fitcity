@@ -28,7 +28,7 @@ export default function MyProfile() {
  
   const handleResetPw = async () => {
     try {
-      await api.requestResetPassword();
+      await api.requestResetPassword(myEmail);
       setCanResetPassword(false);
       setTimeout(() => setCanResetPassword(true), 60000);
       dispatch(setModalIsOpen(false));
@@ -45,7 +45,6 @@ export default function MyProfile() {
           <h2>My Info</h2>
           <div className={styles["info-box-inner"]} style={{border: `solid 2px ${palette[0]}`}}>
             <p>Email: {myEmail}</p>
-            <p>Password: ********</p>
             <button className={`btn ${styles["reset-pw-btn"]}`} 
             style={{background: palette[0]}} 
             onClick={() => canResetPassword ? dispatch(setModalIsOpen(true)) : 

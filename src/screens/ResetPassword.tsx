@@ -35,9 +35,10 @@ export default function ResetPassword() {
     const token = (params.get("token") as string);
     try {
       await api.resetPassword(token, formInput.newPassword);
-      toast("Successfully changed password.  You may now login with your new password", {toastId: "successtoast", type: "success"});
+      toast("You may now login with your new password", {toastId: "successtoast", type: "success"});
       navigate("/login");
-    } catch (err) {
+    } catch (err : unknown) {
+      toast("Internal server error", {toastId: "errortoast", type: "error"});
       console.log(err);
     }
   }
@@ -54,6 +55,7 @@ export default function ResetPassword() {
     <div className={styles["ResetPassword"]}>
       <form className={styles["reset-password-form"]} onSubmit={handleSubmit}>
         <div className={styles["form-input-container"]}>
+          <h2 className={styles["reset-header"]}>Reset Password</h2>
           <label className={styles["label"]} htmlFor="reset_password" 
               style={formInput.newPassword ? {} : {visibility: "hidden"}}>New Password</label>
           <input required className={styles["form-input"]} name="reset_password" type="password" 

@@ -7,6 +7,8 @@ import { useAppSelector } from "../hooks";
 import Signup from "../screens/Signup";
 import Products from "../screens/Products";
 import ResetPassword from "../screens/ResetPassword";
+import ForgotPassword from "../screens/ForgotPassword";
+import Cart from "../screens/Cart";
 
 export default function Routes() {
 
@@ -15,11 +17,17 @@ export default function Routes() {
 
   return(
     <AppRoutes>
-      {isLoggedIn && token && <Route path="/profile" element={<MyProfile/>}/>}
+      {isLoggedIn && token &&
+        <>
+          <Route path="/profile" element={<MyProfile/>}/>
+          <Route path="/cart" element={<Cart/>}/>
+        </> 
+      }
       <Route path="/profile/settings/reset-password" element={<ResetPassword/>}/>
       <Route path="/" element={<Home/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup/>}/>
+      <Route path="/forgot-password" element={<ForgotPassword/>}/>
       <Route path="/products/footwear" element={<Products product="footwear"/>}/>
       <Route path="/products/knee-sleeves" element={<Products product="knee-sleeves"/>}/>
       <Route path="/products/lifting-belts" element={<Products product="lifting-belts"/>}/>

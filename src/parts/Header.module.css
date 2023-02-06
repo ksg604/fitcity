@@ -17,6 +17,7 @@
   align-items:  center;
   margin: 0 10px;
   width: 100%;
+  color: white;
 }
 
 .banner-container {
@@ -45,6 +46,9 @@
   right: 0;
   height: calc(100vh - 12vh);
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .drawer.hidden {
@@ -58,6 +62,7 @@
   overflow: hidden;
   color: white;
   margin: 20px 0;
+  justify-content: center;
 }
 
 .drawer-item {
@@ -83,6 +88,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.cart-link {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  text-align: center;
+  left: -5px;
+  top: -15px;
+  border-radius: 50%;
+  background: #e63f57;
+  width: 20px;
+  color: white;
 }
 
 @media screen and (min-width: 300px) {
@@ -117,30 +137,66 @@
   .outer-container {
     padding: 20px 40px;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-around;
   }
 
   .drawer-menu {
     margin: 0 auto;
-    gap: 20px;
+    gap: 9px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .login {
+    font-weight: 700;
+  }
+
+  .user-row {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    gap: 9px;
+    justify-content: center;
+    width: fit-content;
+  }
+
+  .my-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .link-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 968px) {
+  .link-container {
     flex-direction: row;
   }
 
-  @media screen and (min-width: 1200px) {
-    .drawer-menu {
-      gap: 120px;
-    }
+  .drawer-menu {
+    flex-wrap: nowrap;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .drawer-menu {
+    gap: 120px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .drawer-menu {
+    gap: 180px;
   }
 
-  @media screen and (min-width: 1920px) {
-    .drawer-menu {
-      gap: 180px;
-    }
-  }
+}
 
-  @media screen and (min-width: 2560px) {
-    .drawer-menu {
-      gap: 240px;
-    }
+@media screen and (min-width: 2560px) {
+  .drawer-menu {
+    gap: 240px;
   }
 }

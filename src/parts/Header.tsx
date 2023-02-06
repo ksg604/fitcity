@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faX, faCartShopping, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import banner from "../assets/images/banner_image.avif";
@@ -18,6 +18,7 @@ export default function Header() {
 
   const isLoggedIn = useAppSelector(state => state.auth.loggedIn);
   const isMobile = useAppSelector(state => state.device.isMobile);
+  const cart = useAppSelector(state => state.cart.cart);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [navigationState, setNavigationState] = useState<NavigationState>({
@@ -66,6 +67,12 @@ export default function Header() {
               <Link className={styles["banner-container"]} to="/" onClick={() => setDrawerOpen(false)}>
                 <img className={`${styles["header-banner"]}`} src={banner}/>
               </Link>
+              { isLoggedIn && 
+                <Link to="/cart" className={styles["cart-link"]} onClick={() => setDrawerOpen(false)}>
+                  { cart.lines?.length > 0 && <span className={styles["cart-badge"]}>{cart.lines.length}</span>}
+                  <FontAwesomeIcon icon={faCartShopping} size="xl" color="white" />
+                </Link>
+              }
             </div>
             <div className={`${styles["drawer"]} ${!drawerOpen ? styles["hidden"] : ""}`}>
               <nav className={styles["drawer-menu"]}>
@@ -73,8 +80,8 @@ export default function Header() {
                 <Link className={styles["drawer-item"]} to="/products/footwear" onClick={() => setDrawerOpen(false)}>Footwear</Link>
                 <Link className={styles["drawer-item"]} to="/products/lifting-belts" onClick={() => setDrawerOpen(false)}>Lifting Belts</Link>
                 <Link className={styles["drawer-item"]} to="/products/knee-sleeves" onClick={() => setDrawerOpen(false)}>Knee Sleeves</Link>
-
-                {isLoggedIn 
+              </nav>
+              {isLoggedIn 
                   ? <div className={styles["user-row"]}>
                       <button onClick={() => {setDrawerOpen(false); navigate("/profile")}}>My Profile</button>
                       <button onClick={handleLogout}>Log Out</button>
@@ -84,8 +91,8 @@ export default function Header() {
                       <button onClick={() => {setDrawerOpen(false); navigate("/signup")}}>Sign Up</button>
                     </div>
                 }
-              </nav>
             </div>
+
           </>
         : <div className={styles["outer-container"]}>
             <Link className={styles["banner-container"]} to="/">
@@ -96,6 +103,21 @@ export default function Header() {
               <Link className={styles["drawer-item"]} to="/products/footwear" onClick={() => setDrawerOpen(false)}>Footwear</Link>
               <Link className={styles["drawer-item"]} to="/products/lifting-belts" onClick={() => setDrawerOpen(false)}>Lifting Belts</Link>
               <Link className={styles["drawer-item"]} to="/products/knee-sleeves" onClick={() => setDrawerOpen(false)}>Knee Sleeves</Link>
+              { isLoggedIn 
+                ? <div className={styles["user-row"]}>
+                    <Link to="/profile" className="clickable" onClick={() => setDrawerOpen(false)}>
+                      <FontAwesomeIcon icon={faUserAlt} size="xl" color="white"/>
+                    </Link> 
+                    <Link to="/cart" className={`clickable ${styles["cart-link"]}`} onClick={() => setDrawerOpen(false)}>
+                      { cart.lines?.length > 0 && <span className={styles["cart-badge"]}>{cart.lines.length}</span>}
+                      <FontAwesomeIcon icon={faCartShopping} size="xl" color="white"/>
+                    </Link>             
+                    <Link to="#" onClick={handleLogout}>Log Out</Link>
+                  </div>  
+                : <Link to="/login" className={styles["login"]}>
+                    Log In
+                  </Link>
+              }
             </nav>
           </div>
       }

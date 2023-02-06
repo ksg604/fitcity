@@ -2,9 +2,11 @@ import styles from "./Products.module.css";
 import api from "../ApiClient";
 import { MouseEvent, useEffect, useState } from "react";
 import { setModalIsOpen } from "../features/modal/modalSlice";
-import { useAppDispatch } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
 import AppModal from "../parts/AppModal";
 import Loading from "../screens/Loading";
+import { toast } from "react-toastify";
+import { setCart } from "../features/cart/cartSlice";
 
 export default function Products({product} : {product : string}) {
 
@@ -12,7 +14,9 @@ export default function Products({product} : {product : string}) {
     color: string,
     price: string,
     image: string,
-    size: string
+    size: string,
+    id: string,
+    quantityAvailable: number
   }
 
   type Product = {
@@ -42,10 +46,13 @@ export default function Products({product} : {product : string}) {
       color: "",
       price: "",
       image: "",
-      size: ""
+      size: "",
+      id: "",
+      quantityAvailable: 0
     },
   });
 
+  const cartId = useAppSelector(state => state.cart.cart.id);
   const dispatch = useAppDispatch();
 
   const handleChangeColor = (e: MouseEvent<HTMLImageElement>) : void => {
@@ -62,6 +69,18 @@ export default function Products({product} : {product : string}) {
       variant.size === size && variant.color === screenState.currentVariant.color) as Variant);
     if (variantToChangeTo === screenState.currentVariant) return;
     setScreenState({...screenState, currentVariant: variantToChangeTo});
+  }
+
+  const handleAddToCart = async (e: MouseEvent<HTMLButtonElement>) => {
+    const merchandiseId = screenState.currentVariant.id;
+    try {
+      let r = await api.addProductToCart(merchandiseId, cartId);
+      toast("Item added to your cart", {toastId: "successtoast", type: "success"});
+      let res2 = await api.getCart();
+      dispatch(setCart(res2.cart));
+    } catch (err: unknown) {
+      console.log(err);
+    }
   }
 
   useEffect(() => {
@@ -106,12 +125,15 @@ export default function Products({product} : {product : string}) {
             <div className={styles["size-container"]}>
               <label className={styles["subheader"]} htmlFor="sizes">Sizes: </label>
               <div id="sizes" className={styles["sizes"]}>
-                {screenState.productInfo.sizes.map((size, index) => 
-                <button className={`${styles["size-btn"]} ${size === screenState.currentVariant.size ? styles["selected"] : ""}`}
+                {screenState.productInfo.variants.map((variant, index) => (variant.color === screenState.currentVariant.color) &&
+                <button className={`${styles["size-btn"]} 
+                                  ${variant.size === screenState.currentVariant.size && variant.quantityAvailable !== 0 ? styles["selected"] : ""}
+                                  ${variant.quantityAvailable === 0 ? styles["disabled"] : ""}
+                                  `}
                 key={index}
-                data-size={size} 
-                value={size}
-                onClick={handleChangeSize}>{size}</button>)}
+                data-size={variant.size} 
+                value={variant.size}
+                onClick={handleChangeSize}>{variant.size}</button>)}
               </div>
             </div>
             <div className={styles["description-container"]}>
@@ -119,10 +141,12 @@ export default function Products({product} : {product : string}) {
               <p id="description" className={styles["description"]} dangerouslySetInnerHTML={{ __html: screenState.productInfo.descriptionHtml as string }} />
             </div>
             <div className={styles["add-to-cart"]}>
-              <button className={styles["cart-btn"]}>Add To Cart</button>
+              { screenState.currentVariant.quantityAvailable === 0
+                ? <button className={`${styles["cart-btn"]} ${styles["disabled"]}`}>Out of Stock</button>
+                : <button className={styles["cart-btn"]} onClick={handleAddToCart}>Add To Cart</button>
+              }
             </div>
           </section>
-
           <AppModal 
             title="" hasXBtn
             body={<img src={screenState.currentVariant.image} width="100%"/>}/>

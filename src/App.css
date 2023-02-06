@@ -12,3 +12,8 @@
 .btn {
   border-radius: 8px;
 }
+
+.clickable {
+  pointer-events: all;
+  cursor: pointer;
+}
