@@ -18,9 +18,9 @@ export default function AppModal({title, body, onYes, hasXBtn, hasCancelBtn} : m
   const dispatch = useAppDispatch();
   const modalIsOpen = useAppSelector(state => state.modal.isOpen);
 
-  const afterOpen = () => {
-    // Callback after opening modal
-  }
+  // const afterOpen = () => {
+  //   // Callback after opening modal
+  // }
 
   const closeModal = () => {
     dispatch(setModalIsOpen(false));
@@ -31,7 +31,6 @@ export default function AppModal({title, body, onYes, hasXBtn, hasCancelBtn} : m
       className={styles["AppModal"]}
       overlayClassName={styles["overlay"]}
       isOpen={modalIsOpen}
-      onAfterOpen={afterOpen}
       onRequestClose={closeModal}
       contentLabel="Example Modal"
       appElement={document.getElementById("App") as HTMLElement}
