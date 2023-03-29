@@ -31,16 +31,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_03_005119) do
     t.index ["user_id"], name: "index_refresh_tokens_on_user_id"
   end
 
-  create_table "user_verification_tokens", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "encrypted_token"
-    t.datetime "exp"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["encrypted_token"], name: "index_user_verification_tokens_on_encrypted_token", unique: true
-    t.index ["user_id"], name: "index_user_verification_tokens_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -51,5 +41,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_03_005119) do
 
   add_foreign_key "password_reset_tokens", "users"
   add_foreign_key "refresh_tokens", "users"
-  add_foreign_key "user_verification_tokens", "users"
 end
