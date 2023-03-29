@@ -4,6 +4,7 @@ import { faBars, faX, faCartShopping, faUserAlt } from "@fortawesome/free-solid-
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import banner from "../assets/images/banner_image.avif";
+import banner2 from "../assets/images/logo-svg.svg";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { setLoggedIn } from "../features/auth/authSlice";
 import api from "../ApiClient";
@@ -65,7 +66,7 @@ export default function Header() {
             <div className={styles["outer-container"]}> 
               <FontAwesomeIcon icon={drawerOpen ? faX : faBars} size="2xl" onClick={() => setDrawerOpen(!drawerOpen)} color="white"/>
               <Link className={styles["banner-container"]} to="/" onClick={() => setDrawerOpen(false)}>
-                <img className={`${styles["header-banner"]}`} src={banner}/>
+                <img className={`${styles["header-banner"]}`} src={banner2}/>
               </Link>
               { isLoggedIn && 
                 <Link to="/cart" className={styles["cart-link"]} onClick={() => setDrawerOpen(false)}>
@@ -96,7 +97,7 @@ export default function Header() {
           </>
         : <div className={styles["outer-container"]}>
             <Link className={styles["banner-container"]} to="/">
-              <img className={`${styles["header-banner"]} ${navigationState.expandedHeader ? styles["expanded"] : ""}`} src={banner}/>
+              <img className={`${styles["header-banner"]} ${navigationState.expandedHeader ? styles["expanded"] : ""}`} src={banner2}/>
             </Link>
             <nav className={styles["drawer-menu"]}>
               <Link className={styles["drawer-item"]} to="/" onClick={() => setDrawerOpen(false)}>Home</Link>

@@ -25,6 +25,7 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  width: 80px;
 }
 
 .banner-container:hover {
@@ -32,7 +33,7 @@
 }
 
 .header-banner {
-  width: 200px;
+  width: 100%;
 }
 
 .drawer {
@@ -105,12 +106,11 @@
   color: white;
 }
 
-@media screen and (min-width: 300px) {
-  .header-banner {
-    width: 250px;
+@media screen and (min-width: 400px) {
+  .banner-container {
+    width: 110px;
   }
 }
-
 
 @media screen and (min-width: 769px) {
   .Header {
@@ -190,6 +190,9 @@
 }
 
 @media screen and (min-width: 1920px) {
+  .banner-container {
+    width: 120px;
+  }
   .drawer-menu {
     gap: 180px;
   }
