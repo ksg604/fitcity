@@ -1,7 +1,7 @@
 import store from "./store";
 import { setAccessToken, setLoggedIn } from "./features/auth/authSlice";
 
-const apiUrl: string = "https://10.0.0.31:3001/api";
+const apiUrl: string = "/api/api";
 
 async function fetchGenerator(apiEndpoint: string, method: string, data: Object, credsRequired: boolean) : Promise<APIClientResponse> {
   
