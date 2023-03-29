@@ -8,4 +8,3 @@
 
 User.create(email: "user1@gmail.com", password: "Password1234!", password_confirmation: "Password1234!")
 User.create(email: "user2@gmail.com", password: "Password1234!", password_confirmation: "Password1234!")
-User.create(email: "kevin.sangab@gmail.com", password: "Password1234!", password_confirmation: "Password1234!")
