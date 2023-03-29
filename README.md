@@ -22,4 +22,34 @@ cd fitcity-monolith
 make start-app
 ```
 
-Now open a internet browser window and go to http://localhost:3000
+Now open a internet browser window and go to http://localhost:3000.  You can log in with the following test credentials
+
+username
+```
+user1@gmail.com
+```
+
+password
+```
+Password1234!
+```
+
+Or, sign up and login with your email and password of choice.  If you sign up with a real email, you will receive a confirmation email indicating that you have been activated as customer for the store fitcitydev.  Please note that being activated as a customer for the store means that your email is saved by the store.  If you wish your customer account to be unactivated, please email me anytime at info@kevinsangabriel.io.
+
+*Note: Your email is saved for mock purposes.  The fitcitydev Shopify store is not operational and entirely only for testing.*
+
+## Payments
+
+You can play around with purchasing products by adding items to your cart and checking out.
+
+![checkout information](./readme_images/checkout_information.png)
+
+For the contact information, enter the email you want your order confirmation sent to.  For shipping address, entering a fake address will work.
+
+![checkout payment](./readme_images/checkout_payment.png)
+
+On the checkout page, place a mock order by enter a credit card number of "1" for a successful transaction, or "2" for a failed transaction.
+
+Enter any date in the future for the date and any 3-digit number for the CVV
+
+*Important: Ensure that the contact information you enter is yours.  Placing an order will send order confirmation emails to the contact information you supply.*
