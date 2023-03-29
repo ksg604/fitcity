@@ -1,3 +1,3 @@
 .PHONY: start-https
 start-https:
-	-@bin/rails server -b 'ssl://127.0.0.1:3000?key=/Users/tadas/.ssh/server.key&cert=/Users/tadas/.ssh/server.crt'
+	-@bin/rails server -b 'ssl://10.0.0.31:3001?key=./config/local_certs/10.0.0.31-key.pem&cert=./config/local_certs/10.0.0.31.pem'
