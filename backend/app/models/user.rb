@@ -33,7 +33,7 @@ class User < ApplicationRecord
   # end
 
   def init_cart
-    @client = ShopifyAPI::Clients::Graphql::Storefront.new(ENV["SHOPIFY_SHOP_URL"], ENV["SHOPIFY_STOREFRONT_API_TOKEN"])
+    @client = ShopifyAPI::Clients::Graphql::Storefront.new(Rails.application.credentials.shopify.shop_url, Rails.application.credentials.shopify.storefront_api_token)
 
     mutation = <<-MUTATION
       mutation cartCreate {

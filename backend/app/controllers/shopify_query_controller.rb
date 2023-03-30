@@ -42,7 +42,7 @@ class ShopifyQueryController < ApplicationController
       # session = ShopifyAPI::Utils::SessionUtils.load_current_session(cookies: request.cookies, is_online: true)
 
       # initalize the shopify api client
-      @client = ShopifyAPI::Clients::Graphql::Storefront.new(ENV["SHOPIFY_SHOP_URL"], ENV["SHOPIFY_STOREFRONT_API_TOKEN"])
+      @client = ShopifyAPI::Clients::Graphql::Storefront.new(Rails.application.credentials.shopify.shop_url, Rails.application.credentials.shopify.storefront_api_token)
     end
 
     def query_for_product(product_name)
