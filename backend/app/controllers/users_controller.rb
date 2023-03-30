@@ -38,9 +38,12 @@ class UsersController < ApplicationController
         logger.error "Exception: #{exception}"
         if exception.message.include? "doesn't match"
           render :json => { message: exception }, status: :unprocessable_entity
-        else
+        elsif exception.message.include? "Email has already been taken"
+          render :json => { message: exception }, status: :bad_request
+        else 
           render :json => { message: exception }, status: :bad_request
         end
+        
       end
     else 
       p "web ui action"
@@ -149,7 +152,7 @@ class UsersController < ApplicationController
       shopify_res = @client.query(query: helpers.get_cart_query(@user.cart_id))
     end
 
-    raise Errors::ShopifyError.new("Shopify API Errors: ", "Could not retrieve cart: Invalid Cart") unless shopify_res.body["data"]["cart"].present?
+    raise Errors::ShopifyError.new("Shopify API Errors: Could not retrieve cart: Invalid Cart", "Could not retrieve cart: Invalid Cart") unless shopify_res.body["data"]["cart"].present?
     cart = helpers.process_cart(shopify_res.body)
     return render :json => {cart: cart} 
   end

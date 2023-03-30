@@ -1,7 +1,8 @@
 class User < ApplicationRecord
 
   # users.password_digest in the database is a :string
-  include BCrypt
+  require "BCrypt"
+  require "Errors"
 
   has_secure_password
   
@@ -78,8 +79,20 @@ class User < ApplicationRecord
           "password": self.password
         }
       }
-
-      customer_creation_errors = @client.query(query: mutation, variables: variables).body["data"]["customerCreate"]["customerUserErrors"]
-      raise Errors::ShopifyError.new("Shopify API Errors: ", customer_creation_errors) unless customer_creation_errors.empty?
+      
+      begin
+        response = @client.query(query: mutation, variables: variables)
+        raise Errors::ShopifyError.new("Shopify API Errors:", "Query to create customer failed with status code #{response.code}") unless response.code == 200
+        customer_create_data = response.body["data"]["customerCreate"]
+        raise Errors::ShopifyError.new("Shopify API Errors: ", "No data returned from Shopify API on customer creation query") unless customer_create_data.present?
+        customer_creation_errors = customer_create_data["customerUserErrors"] unless customer_create_data.nil?
+        raise Errors::ShopifyError.new("Shopify API Errors: ", customer_creation_errors) unless customer_creation_errors.empty?
+      rescue => exception
+        if exception.message.include? "Email has already been taken"
+          puts "Exception occurred during customer creation: #{self.email} is already a customer"
+        else 
+          puts "Exception occurred during customer creation: #{exception} on attempted customer creation of #{self.email}"
+        end
+      end
   end 
 end
