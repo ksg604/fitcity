@@ -1,4 +1,0 @@
-.DS_Store
-./backend/config/master.key
-./backend/.env
-./backend/tmp/*
