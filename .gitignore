@@ -2,3 +2,4 @@
 ./backend/config/master.key
 ./backend/.env
 node_modules
+dist

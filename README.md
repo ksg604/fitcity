@@ -2,27 +2,29 @@
 
 A React web app which consumes a Ruby on Rails API integrated with a GraphQL Shopify Storefront API
 
-## Usage 
+## How to run the app locally
 
 1. Clone the repo
 
 ```
-git clone https://github.com/ksg604/fitcity-monolith.git
+git clone https://github.com/ksg604/fitcity.git
 ```
 
 2. Open a terminal shell window and cd into the directory you just cloned
 
 ```
-cd fitcity-monolith
+cd fitcity
 ```
 
 3. Run the following command 
 
 ```
-make start-app
+make start
 ```
 
-Now open a internet browser window and go to http://localhost:3000.  You can log in with the following test credentials
+Now open a internet browser window and go to http://localhost:3000.  In order to view product pages, login as a user, and make orders, you must run the backend as well.  Proceed to https://github.com/ksg604/fitcity-api for more details on getting the backend started.
+
+You can log in with the following test credentials
 
 username
 ```

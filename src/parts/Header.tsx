@@ -46,10 +46,8 @@ export default function Header() {
       const scrollingUp = (window.scrollY < navigationState.previousScrollY);
       const scrollingDown = (window.scrollY > navigationState.previousScrollY);
       if (scrollingUp && (window.scrollY < 10)) {
-        console.log("expanding header");
         setNavigationState({expandedHeader: true, previousScrollY: window.scrollY});
       } else if (scrollingDown && (window.scrollY > 10) && navigationState.expandedHeader) {
-        console.log("minimizing header")
         setNavigationState({expandedHeader: false, previousScrollY: window.scrollY});
       } else {
         setNavigationState({...navigationState, previousScrollY: window.scrollY});

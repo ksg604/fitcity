@@ -52,7 +52,6 @@ export default function App() {
       try {
         let r = await api.getCart();
         dispatch(setCart(r.cart));
-        console.log(r);
       } catch (err: unknown) {
         console.log(err);
       }
