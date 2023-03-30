@@ -10,6 +10,7 @@ import ResetPassword from "../screens/ResetPassword";
 import ForgotPassword from "../screens/ForgotPassword";
 import Cart from "../screens/Cart";
 import { useEffect } from "react";
+import Tutorial from "../screens/Tutorial";
 
 export default function Routes() {
 
@@ -38,6 +39,7 @@ export default function Routes() {
       <Route path="/products/footwear" element={<Products product="footwear"/>}/>
       <Route path="/products/knee-sleeves" element={<Products product="knee-sleeves"/>}/>
       <Route path="/products/lifting-belts" element={<Products product="lifting-belts"/>}/>
+      <Route path="/tutorial" element={<Tutorial/>}/>
       <Route path="*" element={<NotFound/>}/>
     </AppRoutes>
   )

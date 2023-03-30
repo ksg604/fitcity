@@ -76,6 +76,7 @@ export default function Header() {
             <div className={`${styles["drawer"]} ${!drawerOpen ? styles["hidden"] : ""}`}>
               <nav className={styles["drawer-menu"]}>
                 <Link className={styles["drawer-item"]} to="/" onClick={() => setDrawerOpen(false)}>Home</Link>
+                <Link className={styles["drawer-item"]} to="/tutorial" onClick={() => setDrawerOpen(false)}>Tutorial</Link>
                 <Link className={styles["drawer-item"]} to="/products/footwear" onClick={() => setDrawerOpen(false)}>Footwear</Link>
                 <Link className={styles["drawer-item"]} to="/products/lifting-belts" onClick={() => setDrawerOpen(false)}>Lifting Belts</Link>
                 <Link className={styles["drawer-item"]} to="/products/knee-sleeves" onClick={() => setDrawerOpen(false)}>Knee Sleeves</Link>
@@ -99,6 +100,7 @@ export default function Header() {
             </Link>
             <nav className={styles["drawer-menu"]}>
               <Link className={styles["drawer-item"]} to="/" onClick={() => setDrawerOpen(false)}>Home</Link>
+              <Link className={styles["drawer-item"]} to="/tutorial" onClick={() => setDrawerOpen(false)}>Tutorial</Link>
               <Link className={styles["drawer-item"]} to="/products/footwear" onClick={() => setDrawerOpen(false)}>Footwear</Link>
               <Link className={styles["drawer-item"]} to="/products/lifting-belts" onClick={() => setDrawerOpen(false)}>Lifting Belts</Link>
               <Link className={styles["drawer-item"]} to="/products/knee-sleeves" onClick={() => setDrawerOpen(false)}>Knee Sleeves</Link>
