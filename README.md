@@ -22,7 +22,13 @@ cd fitcity
 make start
 ```
 
-Now open a internet browser window and go to http://localhost:3000.  In order to view product pages, login as a user, and make orders, you must run the backend as well.  Proceed to https://github.com/ksg604/fitcity-api for more details on getting the backend started.
+Now open a internet browser window and go to http://localhost:3000.
+
+*Note: In order to view product pages, login, and make orders, the backend must be running as well.  There is currently no way to run the backend locally because of personal privacy reasons.  If you wish to see the full functionality of Fit City, proceed to the live version at http://fitcity.s3-website-us-west-2.amazonaws.com/.
+
+Otherwise, you can see the code for the backend at https://github.com/ksg604/fitcity-api
+
+<!-- Now open a internet browser window and go to http://localhost:3000.  In order to view product pages, login as a user, and make orders, you must run the backend as well.  Proceed to https://github.com/ksg604/fitcity-api for more details on getting the backend started.
 
 You can log in with the following test credentials
 
@@ -54,4 +60,4 @@ On the checkout page, place a mock order by enter a credit card number of "1" fo
 
 Enter any date in the future for the date and any 3-digit number for the CVV
 
-*Important: Ensure that the contact information you enter is yours.  Placing an order will send order confirmation emails to the contact information you supply.*
+*Important: Ensure that the contact information you enter is yours.  Placing an order will send order confirmation emails to the contact information you supply.* -->
