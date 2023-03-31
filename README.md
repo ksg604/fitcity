@@ -28,18 +28,21 @@ Now open a internet browser window and go to http://localhost:3000.
 
 Otherwise, you can see the code for the backend at https://github.com/ksg604/fitcity-api
 
-<!-- Now open a internet browser window and go to http://localhost:3000.  In order to view product pages, login as a user, and make orders, you must run the backend as well.  Proceed to https://github.com/ksg604/fitcity-api for more details on getting the backend started.
+## How to use the live version of the app
+
+Proceed to the "tutorials" screen on Fit City if you wish to see instructions on how to use the app without having to navigate back here.  
 
 You can log in with the following test credentials
 
 username
 ```
 user1@gmail.com
+user2@gmail.com
 ```
 
 password
 ```
-Password1234!
+Password1234! (same password for both usernames)
 ```
 
 Or, sign up and login with your email and password of choice.  If you sign up with a real email, you will receive a confirmation email indicating that you have been activated as customer for the store fitcitydev.  Please note that being activated as a customer for the store means that your email is saved by the store.  If you wish your customer account to be unactivated, please email me anytime at info@kevinsangabriel.io.
@@ -60,4 +63,4 @@ On the checkout page, place a mock order by enter a credit card number of "1" fo
 
 Enter any date in the future for the date and any 3-digit number for the CVV
 
-*Important: Ensure that the contact information you enter is yours.  Placing an order will send order confirmation emails to the contact information you supply.* -->
+*Important: Ensure that the contact information you enter is yours.  Placing an order will send order confirmation emails to the contact information you supply.*
