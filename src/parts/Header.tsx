@@ -68,7 +68,7 @@ export default function Header() {
               </Link>
               { isLoggedIn && 
                 <Link to="/cart" className={styles["cart-link"]} onClick={() => setDrawerOpen(false)}>
-                  { cart.lines?.length > 0 && <span className={styles["cart-badge"]}>{cart.lines.length}</span>}
+                  { cart.lines?.length > 0 && <span className={styles["cart-badge"]}>{cart.totalQuantity}</span>}
                   <FontAwesomeIcon icon={faCartShopping} size="xl" color="white" />
                 </Link>
               }
@@ -110,7 +110,7 @@ export default function Header() {
                       <FontAwesomeIcon icon={faUserAlt} size="xl" color="white"/>
                     </Link> 
                     <Link to="/cart" className={`clickable ${styles["cart-link"]}`} onClick={() => setDrawerOpen(false)}>
-                      { cart.lines?.length > 0 && <span className={styles["cart-badge"]}>{cart.lines.length}</span>}
+                      { cart.lines?.length > 0 && <span className={styles["cart-badge"]}>{cart.totalQuantity}</span>}
                       <FontAwesomeIcon icon={faCartShopping} size="xl" color="white"/>
                     </Link>             
                     <Link to="#" onClick={handleLogout}>Log Out</Link>

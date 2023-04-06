@@ -14,5 +14,6 @@ export type CartLine = {
 export type Cart = {
   id: string,
   checkoutUrl: string,
-  lines: Array<CartLine>
+  lines: Array<CartLine>,
+  totalQuantity: number
 }
