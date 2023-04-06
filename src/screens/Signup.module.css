@@ -58,10 +58,11 @@
 .submit-container {
   display: flex;
   justify-content: space-between;
+  text-align: center;
 }
 
 @media screen and (min-width: 769px) {
   .main {
-    
+    margin: 40px 0;
   }
 }

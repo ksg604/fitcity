@@ -7,6 +7,7 @@ import AppModal from "../parts/AppModal";
 import Loading from "../screens/Loading";
 import { toast } from "react-toastify";
 import { setCart } from "../features/cart/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function Products({product} : {product : string}) {
 
@@ -52,8 +53,10 @@ export default function Products({product} : {product : string}) {
     },
   });
 
+  const isLoggedIn = useAppSelector(state => state.auth.loggedIn);
   const cartId = useAppSelector(state => state.cart.cart.id);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleChangeColor = (e: MouseEvent<HTMLImageElement>) : void => {
     const color = (e.currentTarget.dataset.color as string);
@@ -82,6 +85,10 @@ export default function Products({product} : {product : string}) {
       console.log(err);
     }
   }
+
+  useEffect(() => {
+    if (!isLoggedIn) navigate("/login");
+  }, []);
 
   useEffect(() => {
     const getProductInfo = async () => {
